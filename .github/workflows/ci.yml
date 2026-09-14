@@ -40,3 +40,18 @@ jobs:
 
     - name: Build frontend
       run: npm --prefix ./frontend run build
+
+
+      # Upload Backend Build Artifact
+- name: Upload Backend Artifact
+  uses: actions/upload-artifact@v4
+  with:
+    name: dotnet-backend
+    path: ./backend/bin/Release/
+
+# Upload Frontend Build Artifact
+- name: Upload Frontend Artifact
+  uses: actions/upload-artifact@v4
+  with:
+    name: angular-frontend
+    path: ./frontend/dist/
