@@ -22,13 +22,13 @@ jobs:
 
     # Build and Test .NET Backend
     - name: Restore dependencies
-      run: dotnet restore .\backend\TicTacToe.sln
+      run: dotnet restore ./backend/TicTacToe.sln
 
     - name: Build backend
-      run: dotnet build .\backend\TicTacToe.sln --configuration Release --no-restore
+      run: dotnet build ./backend/TicTacToe.sln --configuration Release --no-restore
 
     - name: Run backend tests
-      run: dotnet test .\backend\TicTacToe.sln --configuration Release --no-restore --verbosity normal
+      run: dotnet test ../backend/TicTacToe.sln --configuration Release --no-restore --verbosity normal
 
     # Setup Node.js Environment for Frontend
     - name: Setup Node.js
