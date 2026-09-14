@@ -14,13 +14,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Setup .NET Environment
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
-    # Build and Test .NET Backend
     - name: Restore dependencies
       run: dotnet restore ./backend/TicTacToe.sln
 
@@ -28,9 +26,8 @@ jobs:
       run: dotnet build ./backend/TicTacToe.sln --configuration Release --no-restore
 
     - name: Run backend tests
-      run: dotnet test ../backend/TicTacToe.sln --configuration Release --no-restore --verbosity normal
+      run: dotnet test ./backend/TicTacToe.sln --configuration Release --no-restore --verbosity normal
 
-    # Setup Node.js Environment for Frontend
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
@@ -38,7 +35,6 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './frontend/package-lock.json'
 
-    # Install and Build Angular Frontend
     - name: Install frontend dependencies
       run: npm --prefix ./frontend ci
 
